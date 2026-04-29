@@ -1,0 +1,170 @@
+1) WHAT IS POWER BI AND HOW DOES IT DIFFER FROM EXCEL?
+ANSWER:-
+Power BI is a cloud-based business intelligence platform for creating interactive dashboards and reports, 
+handling large datasets efficiently with real-time refresh capabilities. Excel is a spreadsheet application limited to ~1 million rows, 
+designed for basic calculations and data entry, not enterprise-level analytics.
+
+================================================================================
+
+2) EXPLAIN THE CONCEPT OF DATA MODELING IN POWER BI
+ANSWER:-
+Data modeling organizes data into tables, columns, and relationships to support analysis. 
+It includes creating proper table structures (star schema with fact and dimension tables), defining relationships between tables, 
+and setting up hierarchies for intuitive data exploration.
+
+================================================================================
+
+3) WHAT ARE THE DIFFERENT TYPES OF CONNECTIONS AVAILABLE IN POWER BI?
+ANSWER:-
+Power BI supports cloud connections (Azure SQL, Salesforce, Google Analytics), on-premises connections (SQL Server, Oracle, MySQL via Gateway), 
+web/file-based connections (Excel, CSV, JSON), and enterprise connections (SAP, Analysis Services). Three modes available: Import, 
+DirectQuery, and Live Connection (real-time from Analysis Services).
+
+================================================================================
+
+4) HOW DO YOU HANDLE DATA TRANSFORMATION IN POWER BI?
+ANSWER:-
+Data transformation is handled through Power Query (Query Editor) which allows cleaning (removing duplicates, nulls), 
+reshaping (pivoting, splitting columns), combining (merging/appending tables), filtering, and adding calculated columns. 
+Transformations are recorded as steps and automatically applied during refresh.
+
+================================================================================
+
+5) WHAT IS DAX (DATA ANALYSIS EXPRESSIONS) AND WHY IS IT IMPORTANT IN POWER BI?
+ANSWER:-
+DAX is a formula language for creating custom calculations, measures, and calculated columns in Power BI. 
+It's important because it enables advanced analytics, supports complex business logic, optimizes performance, 
+and allows creation of sophisticated KPIs and metrics beyond built-in functions.
+
+================================================================================
+
+6) CAN YOU EXPLAIN THE DIFFERENCE BETWEEN CALCULATED COLUMNS AND MEASURES IN POWER BI?
+ANSWER:-
+Calculated Columns are row-by-row calculations stored in the model (increase size, slower refresh), used for data transformation and filtering. 
+Measures are aggregations calculated on-demand (don't increase model size, faster refresh), used for analytics and KPIs, 
+and respond to filter context dynamically.
+
+================================================================================
+
+7) HOW DO YOU HANDLE RELATIONSHIPS BETWEEN TABLES IN POWER BI?
+ANSWER:-
+Relationships link tables based on common fields with types: One-to-Many (most common), One-to-One (rare), 
+Many-to-Many (complex). Create relationships manually or auto-detect, configure cardinality and filter direction, 
+and maintain referential integrity. Use star schema design for optimal performance.
+
+================================================================================
+
+8) WHAT IS THE PURPOSE OF A POWER BI GATEWAY?
+ANSWER:-
+A Power BI Gateway acts as a secure bridge between Power BI Cloud Service and on-premises data sources behind corporate firewalls. 
+It enables scheduled data refresh from on-premises databases without exposing data to the internet, supporting DirectQuery connections and maintaining security.
+
+================================================================================
+
+9) HOW CAN YOU SCHEDULE DATA REFRESH IN POWER BI SERVICE?
+ANSWER:-
+In Power BI Service, go to Dataset Settings > Scheduled Refresh to configure refresh frequency, 
+set specific times, and enable failure notifications. For on-premises sources, configure the appropriate data gateway first.
+
+================================================================================
+
+10) EXPLAIN THE CONCEPT OF ROW-LEVEL SECURITY IN POWER BI
+ANSWER:-
+Row-Level Security (RLS) restricts which data rows users see based on their identity and assigned roles. 
+Create roles in Power BI Desktop with DAX filters (e.g., [Region]="North"), map users to roles in the Service, 
+and configure Object-Level Security to hide sensitive columns or measures.
+
+================================================================================
+
+11) WHAT IS THE POWER BI DESKTOP AND HOW DOES IT DIFFERS FROM POWER BI SERVICE?
+ANSWER:-
+Power BI Desktop is a free Windows application for creating reports, data models, 
+and transformations; it's a development tool. Power BI Service is the cloud platform for sharing, consuming, and managing reports; 
+it's for collaboration, sharing, scheduling refreshes, and monitoring usage.
+
+================================================================================
+
+12) EXPLAIN THE CONCEPT OF DIRECT QUERY IN POWER BI
+ANSWER:-
+DirectQuery sends queries directly to the data source instead of importing data, 
+providing real-time analytics and supporting unlimited data sizes without storage constraints. However, 
+it results in slower query performance as it depends on source performance, and some DAX functions are unavailable.
+
+================================================================================
+
+13) WHAT ARE POWER BI TEMPLATES AND HOW ARE THEY USEFUL?
+ANSWER:-
+Power BI Templates are pre-built report structures containing design and measures but no data, 
+allowing quick creation of reports from a template. They save time, ensure consistency, follow best practices, 
+and can be saved as custom templates for organizational standards.
+
+================================================================================
+
+14) HOW DO YOU HANDLE INCREMENTAL DATA REFRESH IN POWER BI?
+ANSWER:-
+Incremental refresh (Premium only) refreshes only new/changed data instead of the entire dataset using RangeStart/RangeEnd parameters in Power Query. 
+Configure policy to store data for 12+ months and increment by 7-30 days, reducing refresh time by 80-90% and enabling frequent refreshes.
+
+================================================================================
+
+15) WHAT IS THE ROLE OF POWER QUERY IN POWER BI?
+ANSWER:-
+Power Query is the data transformation engine that extracts data from sources, cleans data (removes duplicates, nulls), 
+reshapes data (pivots, splits), and combines multiple sources before loading into the model. 
+It uses M language and records transformation steps for automatic application during refresh.
+
+================================================================================
+
+16) EXPLAIN THE DIFFERENCE BETWEEN CALCULATED COLUMNS AND CALCULATED TABLES IN POWER BI
+ANSWER:-
+Calculated Columns create new columns row-by-row, stored in model, used for transformations and can be used in relationships. 
+Calculated Tables create new tables using DAX (like CALENDAR or FILTER), stored in model, 
+used for dimension tables and parameter tables but cannot be used in relationships.
+
+================================================================================
+
+17) HOW DO YOU CREATE CUSTOM VISUALS IN POWER BI?
+ANSWER:-
+Find visuals in AppSource or upload .pbiviz files, then use them like built-in visuals by selecting from visualization pane and adding data fields. 
+For custom development, use Node.js, TypeScript, D3.js, and Power BI Visual Tools to create, test, and publish custom visualizations.
+
+================================================================================
+
+18) WHAT ARE THE BEST PRACTICES FOR OPTIMIZING PERFORMANCE IN POWER BI?
+ANSWER:-
+Optimize data model (star schema, remove unused columns), optimize DAX (use variables, avoid FILTER on large tables), 
+limit visualizations per page, use aggregation tables for DirectQuery, schedule refreshes off-peak, and incrementally refresh large tables. 
+Monitor performance with Performance Analyzer and Premium Metrics.
+
+================================================================================
+
+19) HOW CAN YOU INTEGRATE POWER BI WITH OTHER MICROSOFT PRODUCTS LIKE AZURE AND OFFICE 365?
+ANSWER:-
+Power BI integrates with Azure, Office 365 (Excel, SharePoint), and Power Platform (Power Apps, Power Automate). 
+Create seamless data pipelines from Azure, embed reports in SharePoint/Teams, and trigger workflows from Power BI alerts.
+
+================================================================================
+
+20) EXPLAIN THE CONCEPT OF AGGREGATIONS IN POWER BI
+ANSWER:-
+Aggregations are pre-calculated summary tables (Import mode) that Power BI automatically routes to when relevant, 
+improving DirectQuery query performance dramatically (from 30+ seconds to <1 second). Required for Premium capacity, 
+they consist of summarized data grouped by dimensions like Month, Product, Region.
+
+================================================================================
+
+21) HOW DO YOU HANDLE ERROR HANDLING AND DATA QUALITY IN POWER BI?
+ANSWER:-
+Handle errors in Power Query using try-catch (try expression catch fallback), IFERROR in DAX for calculations, 
+and remove/replace errors with validation functions. Ensure data quality by removing duplicates, handling nulls, validating ranges, 
+and creating quality dashboards to monitor completeness, accuracy, and consistency.
+
+================================================================================
+
+22) WHAT IS THE PURPOSE OF POWER BI EMBEDDED AND WHEN WOULD YOU USE IT?
+ANSWER:-
+Power BI Embedded enables embedding Power BI reports in third-party applications for SaaS, LOB apps, 
+or customer-facing analytics without requiring user Power BI licenses. Use it when you need white-labeled analytics within your application, 
+require multi-tenant isolation with RLS, or want to provide analytics to external customers.
+
+================================================================================
